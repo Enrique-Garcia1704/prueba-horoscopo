@@ -1,0 +1,519 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gemini Alchemical Card Typography & Styles */
+.font-cinzel { font-family: 'Cinzel', serif; }
+.font-lora { font-family: 'Lora', serif; }
+.font-montserrat { font-family: 'Montserrat', sans-serif; }
+
+.text-teal-spiritual { color: #3d9694; }
+.text-magenta-spiritual { color: #9c3c6d; }
+.bg-paper { background-color: #f4ece1; }
+
+.tarot-card {
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f4ece1;
+    background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+    
+    border: 14px solid transparent;
+    border-image: linear-gradient(135deg, #f3e5ab 0%, #c5a059 20%, #8a5a19 45%, #d4af37 55%, #f8e19c 75%, #6b440b 100%) 1;
+    
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(138, 90, 25, 0.15);
+    position: relative;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.tarot-image-container {
+    border: 2px solid #8a5a19;
+    padding: 8px;
+    background: #fffdf9;
+    margin: 0 auto 24px auto;
+    max-width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.tarot-image-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 15px rgba(138, 90, 25, 0.3);
+    pointer-events: none;
+}
+
+.tarot-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: sepia(0.25) contrast(1.15) brightness(0.9);
+}
+
+.tarot-title {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    letter-spacing: 0.15em;
+    font-size: 2.6rem;
+    color: #2c2820;
+    margin: 0 0 4px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
+}
+
+.tarot-subtitle {
+    font-family: 'Lora', serif;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #8a5a19;
+    font-style: italic;
+    margin: 0 0 24px 0;
+    letter-spacing: 0.05em;
+}
+
+.tarot-text {
+    font-family: 'Lora', serif;
+    line-height: 1.7;
+    color: #333333;
+    text-align: justify;
+    font-size: 1.05rem;
+    padding: 0 15px;
+}
+
+.tarot-content-scroll {
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.tarot-content-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.uncial-antiqua-regular {
+    font-family: "Uncial Antiqua", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #000000;
+    color: #e4dfff;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.glass-card {
+    background: rgba(30, 20, 60, 0.85);
+    backdrop-filter: blur(20px);
+    border: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    filter: drop-shadow(0 0 8px rgba(212, 187, 255, 0.25));
+}
+
+.glass-card:hover {
+    transform: scale(1.12);
+    background: rgba(55, 35, 100, 0.95);
+    filter: drop-shadow(0 0 20px rgba(212, 187, 255, 0.5));
+}
+
+.fire-glow:hover {
+    filter: drop-shadow(0 0 15px rgba(255, 180, 171, 0.4));
+}
+
+.earth-glow:hover {
+    filter: drop-shadow(0 0 15px rgba(255, 225, 109, 0.4));
+}
+
+.air-glow:hover {
+    filter: drop-shadow(0 0 15px rgba(0, 220, 229, 0.4));
+}
+
+.water-glow:hover {
+    filter: drop-shadow(0 0 15px rgba(212, 187, 255, 0.4));
+}
+
+.glow-button {
+    box-shadow: 0 0 15px rgba(212, 187, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+    box-shadow: 0 0 25px rgba(212, 187, 255, 0.5);
+}
+
+.modal-overlay {
+    background: rgba(13, 10, 39, 0.85);
+    backdrop-filter: blur(12px);
+}
+
+.modal-card {
+    clip-path: none;
+}
+
+.star-pulse {
+    animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+        filter: blur(0px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+        filter: blur(2px);
+    }
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration) ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+/* Zodiac Wheel */
+.zodiac-wheel-container {
+    perspective: 1000px;
+}
+
+.zodiac-wheel {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    animation: wheelSpin 120s linear infinite;
+}
+
+@media (min-width: 640px) {
+    .zodiac-wheel {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@media (min-width: 768px) {
+    .zodiac-wheel {
+        width: 600px;
+        height: 600px;
+    }
+}
+
+@keyframes wheelSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.wheel-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(212, 187, 255, 0.4);
+}
+
+.wheel-ring-outer {
+    inset: 0;
+    background: radial-gradient(circle, transparent 60%, rgba(30, 10, 60, 0.8) 100%);
+    box-shadow: 0 0 30px rgba(150, 100, 255, 0.2), inset 0 0 30px rgba(150, 100, 255, 0.1);
+}
+
+.wheel-ring-middle {
+    inset: 15%;
+    border-color: rgba(212, 187, 255, 0.3);
+    background: rgba(60, 30, 120, 0.3);
+}
+
+.wheel-ring-inner {
+    inset: 35%;
+    border-color: rgba(212, 187, 255, 0.5);
+    background: rgba(80, 40, 160, 0.2);
+}
+
+.wheel-center {
+    position: absolute;
+    inset: 42%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(120, 60, 200, 0.6), rgba(30, 10, 60, 0.9));
+    border: 2px solid rgba(255, 219, 60, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(255, 219, 60, 0.3);
+}
+
+.wheel-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.wheel-sign {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin: -30px;
+    transform: rotate(var(--angle)) translateY(-120px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+    .wheel-sign {
+        width: 80px;
+        height: 80px;
+        margin: -40px;
+        transform: rotate(var(--angle)) translateY(-200px);
+    }
+}
+
+@media (min-width: 768px) {
+    .wheel-sign {
+        width: 90px;
+        height: 90px;
+        margin: -45px;
+        transform: rotate(var(--angle)) translateY(-240px);
+    }
+}
+
+.wheel-sign:hover {
+    transform: rotate(var(--angle)) translateY(-120px) scale(1.2);
+    z-index: 10;
+}
+
+@media (min-width: 640px) {
+    .wheel-sign:hover {
+        transform: rotate(var(--angle)) translateY(-200px) scale(1.2);
+    }
+}
+
+@media (min-width: 768px) {
+    .wheel-sign:hover {
+        transform: rotate(var(--angle)) translateY(-240px) scale(1.2);
+    }
+}
+
+.sign-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: counterSpin 120s linear infinite;
+}
+
+@keyframes counterSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.sign-icon {
+    font-size: 24px;
+    color: #d4bbff;
+    filter: drop-shadow(0 0 6px rgba(212, 187, 255, 0.5));
+    transition: all 0.3s;
+}
+
+@media (min-width: 640px) {
+    .sign-icon {
+        font-size: 32px;
+    }
+}
+
+@media (min-width: 768px) {
+    .sign-icon {
+        font-size: 36px;
+    }
+}
+
+.wheel-sign:hover .sign-icon {
+    color: #ffdb3c;
+    filter: drop-shadow(0 0 12px rgba(255, 219, 60, 0.6));
+}
+
+.sign-name {
+    font-family: 'Cinzel', serif;
+    font-size: 7px;
+    font-weight: 600;
+    color: #e4dfff;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .sign-name {
+        font-size: 9px;
+    }
+}
+
+@media (min-width: 768px) {
+    .sign-name {
+        font-size: 10px;
+    }
+}
+
+.wheel-sign:hover .sign-name {
+    color: #ffdb3c;
+}
+
+.sign-tooltip {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 10, 60, 0.95);
+    border: 1px solid rgba(255, 219, 60, 0.5);
+    color: #ffdb3c;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+@media (min-width: 640px) {
+    .sign-tooltip {
+        font-size: 11px;
+        padding: 4px 10px;
+        bottom: -32px;
+    }
+}
+
+.wheel-sign:hover .sign-tooltip {
+    opacity: 1;
+}
+
+/* Wheel Marker */
+.zodiac-wheel-container {
+    position: relative;
+}
+
+.wheel-marker {
+    position: absolute;
+    right: calc(50% - 170px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+}
+
+@media (min-width: 640px) {
+    .wheel-marker {
+        right: calc(50% - 270px);
+    }
+}
+
+@media (min-width: 768px) {
+    .wheel-marker {
+        right: calc(50% - 320px);
+    }
+}
+
+.marker-arrow {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 20px solid #ffdb3c;
+    filter: drop-shadow(0 0 8px rgba(255, 219, 60, 0.6));
+}
+
+@media (min-width: 640px) {
+    .marker-arrow {
+        border-top: 16px solid transparent;
+        border-bottom: 16px solid transparent;
+        border-right: 28px solid #ffdb3c;
+    }
+}
+
+.wheel-tooltip {
+    position: absolute;
+    right: calc(50% - 230px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(30, 10, 60, 0.95);
+    border: 1px solid rgba(255, 219, 60, 0.6);
+    border-radius: 8px;
+    padding: 8px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    z-index: 20;
+    min-width: 120px;
+}
+
+@media (min-width: 640px) {
+    .wheel-tooltip {
+        right: calc(50% - 360px);
+    }
+}
+
+@media (min-width: 768px) {
+    .wheel-tooltip {
+        right: calc(50% - 420px);
+    }
+}
+
+@media (max-width: 639px) {
+    .wheel-tooltip {
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -60px;
+        transform: translateX(-50%);
+    }
+}
+
+.tooltip-sign {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffdb3c;
+}
+
+.tooltip-date {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    color: #d4bbff;
+}
