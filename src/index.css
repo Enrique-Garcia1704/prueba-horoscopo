@@ -196,6 +196,37 @@ body {
     animation-delay: var(--delay);
 }
 
+@keyframes shootingStar {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-45deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    15% {
+        transform: translateX(-500px) translateY(500px) rotate(-45deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-500px) translateY(500px) rotate(-45deg);
+        opacity: 0;
+    }
+}
+
+.shooting-star {
+    position: absolute;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+    opacity: 0;
+    transform: rotate(-45deg);
+    animation: shootingStar var(--duration) linear infinite;
+    animation-delay: var(--delay);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+    z-index: 1;
+}
+
 /* Zodiac Wheel */
 .zodiac-wheel-container {
     perspective: 1000px;

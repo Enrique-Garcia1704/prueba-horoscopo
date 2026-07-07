@@ -23,11 +23,32 @@ export default function Starfield() {
                 />
             );
         }
+        
+        for (let i = 0; i < 6; i++) {
+            const left = (20 + Math.random() * 80) + '%';
+            const top = (Math.random() * 40) + '%';
+            const duration = (8 + Math.random() * 10) + 's';
+            const delay = (Math.random() * 15) + 's';
+
+            starElements.push(
+                <div
+                    key={`shoot-${i}`}
+                    className="shooting-star"
+                    style={{
+                        left,
+                        top,
+                        '--duration': duration,
+                        '--delay': delay
+                    }}
+                />
+            );
+        }
+        
         return starElements;
     }, []);
 
     return (
-        <div id="starsContainer" className="absolute inset-0 pointer-events-none opacity-50 z-0">
+        <div id="starsContainer" className="absolute inset-0 pointer-events-none opacity-50 z-0 overflow-hidden">
             {stars}
         </div>
     );
