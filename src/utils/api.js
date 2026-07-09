@@ -25,7 +25,8 @@ async function translateText(text) {
 }
 
 export async function fetchHoroscope(sign) {
-    const englishSign = spanishToEnglishSign[sign] || sign;
+    const normalizedSign = sign.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const englishSign = spanishToEnglishSign[normalizedSign] || normalizedSign;
     const apiKey = import.meta.env.VITE_API_KEY || '';
     
     if (!apiKey) {
